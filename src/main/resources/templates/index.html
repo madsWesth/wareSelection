@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://ww">
+<head>
+    <meta charset="UTF-8">
+    <title>Web Catalog</title>
+    <link href="/static/stylesheet.css">
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="product : ${products}">
+                <td th:text="${product.id}"></td>
+                <td th:text="${product.name}"></td>
+                <td th:text="${product.price}"></td>
+
+                <td>
+                    <!--update and delete buttons buttons here-->
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <!-- create new item button -->
+</body>
+</html>
