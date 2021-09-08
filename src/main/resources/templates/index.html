@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://ww">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Web Catalog</title>
-    <link href="/static/stylesheet.css">
+    <link href="/stylesheet.css" rel="stylesheet" type="text/css">
 </head>
 <body>
     <table>
@@ -12,6 +12,7 @@
                 <th>Id</th>
                 <th>Name</th>
                 <th>Price</th>
+                <th>Buttons</th>
             </tr>
         </thead>
         <tbody>
@@ -22,10 +23,21 @@
 
                 <td>
                     <!--update and delete buttons buttons here-->
+                    <a th:href="@{'/updateProduct/'+${product.id}}">
+                        <button>Update</button>
+                    </a>
+                    <a th:href="@{'/deleteProduct/'+${product.id}}">
+                        <button>Delete</button>
+                    </a>
+
                 </td>
             </tr>
         </tbody>
     </table>
     <!-- create new item button -->
+    <a href="createProduct">
+        <button>Create new product</button>
+    </a>
+
 </body>
 </html>

@@ -28,11 +28,17 @@ public class ProductRepository {
                 .get(0);
     }
 
-    public void delete(int id) {
-        jdbcTemplate.update("DELETE * FROM products WHERE id = " + id);
+    public void create(Product product) {
+        jdbcTemplate.update("INSERT INTO products VALUES (DEFAULT, ?, ?)",
+                product.getName(), product.getPrice());
     }
 
-    public void update(int id) {
-        //jdbcTemplate.update()
+    public void delete(int id) {
+        jdbcTemplate.update("DELETE FROM products WHERE id = ?", id);
+    }
+
+    public void update(int id, Product product) {
+        jdbcTemplate.update("UPDATE products SET name = ?, price = ? WHERE id = ?",
+                product.getName(), product.getPrice(), id);
     }
 }

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Product</title>
+    <link href="/static/stylesheet.css" rel="stylesheet" type="text/css">
+
+</head>
+<body>
+    <form th:href="@{'/updateProduct/'+${product.id}}" method="post">
+        <label>Name</label>
+        <input type="text" name="name" th:value="${product.name}">
+
+        <label>Price</label>
+        <input type="text" name="price" th:value="${product.price}">
+
+        <input type="submit" value="Update Product">
+    </form>
+</body>
+</html>

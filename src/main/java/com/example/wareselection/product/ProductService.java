@@ -19,12 +19,16 @@ public class ProductService {
         return productRepository.findById(id);
     }
 
-    public void delete(int id) {
-        productRepository.delete(id);
+    public void create(Product product) {
+        productRepository.create(product);
     }
 
-    public void update(int id) {
-        productRepository.update(id);
+    public void update(int id, Product product) {
+        productRepository.update(id, product);
+    }
+
+    public void delete(int id) {
+        productRepository.delete(id);
     }
 
 }

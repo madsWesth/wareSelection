@@ -1,0 +1,13 @@
+button:hover{
+    border: black 20px;
+    transform: rotate(70deg);
+}
+
+table{
+    border: 1px black solid;
+    background-color: grey;
+}
+
+td{
+    border: 1px green solid;
+}
