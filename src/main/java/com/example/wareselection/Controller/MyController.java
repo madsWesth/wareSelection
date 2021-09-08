@@ -1,6 +1,6 @@
 package com.example.wareselection.Controller;
 
-import com.example.wareselection.product.Product;
+import com.example.wareselection.product.Products;
 import com.example.wareselection.product.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,19 +28,20 @@ public class MyController {
     }
 
     @PostMapping("/createProduct")
-    public String createProduct(@ModelAttribute Product product) {
+    public String createProduct(@ModelAttribute Products product) {
         productService.create(product);
         return "redirect:/";
     }
 
     @GetMapping("/updateProduct/{id}")
     public String updateProduct(@PathVariable("id") int id, Model model) {
-        model.addAttribute("product", productService.findById(id));
+        productService.findById(id)
+                .ifPresent(value -> model.addAttribute("product", value));
         return "updateProduct";
     }
 
     @PostMapping("/updateProduct/{id}")
-    public String updateProduct(@PathVariable("id") int id, @ModelAttribute Product product) {
+    public String updateProduct(@PathVariable("id") int id, @ModelAttribute Products product) {
         productService.update(id, product);
         return "redirect:/";
     }

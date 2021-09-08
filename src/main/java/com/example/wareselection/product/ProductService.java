@@ -3,7 +3,7 @@ package com.example.wareselection.product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ProductService {
@@ -11,24 +11,26 @@ public class ProductService {
     @Autowired
     ProductRepository productRepository;
 
-    public List<Product> fetchAll() {
-        return productRepository.fetchAll();
+    public Iterable<Products> fetchAll() {
+        return productRepository.findAll();
     }
 
-    public Product findById(int id) {
+    public Optional<Products> findById(int id) {
         return productRepository.findById(id);
     }
 
-    public void create(Product product) {
-        productRepository.create(product);
+    public void create(Products product) {
+        productRepository.save(product);
     }
 
-    public void update(int id, Product product) {
-        productRepository.update(id, product);
+    public void update(int id, Products product) {
+        product.setId(id);
+        productRepository.save(product);
     }
 
     public void delete(int id) {
-        productRepository.delete(id);
+        Optional<Products> product = productRepository.findById(id);
+        product.ifPresent(value -> productRepository.delete(value));
     }
 
 }
